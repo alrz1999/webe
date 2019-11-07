@@ -13,13 +13,20 @@ def home(request):
 
 
 def signup(request):
+    truePassword = True
+    trueUsername = True
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('/')
-    else:
-        form = SignUpForm()
+        else:
+            if request.POST['password1'] != request.POST['password2']:
+                truePassword = False
+            elif len(User.objects.all().filter(username=request.POST['username'])) > 0:
+                trueUsername = False
+            return redirect('/register', {'form': form, 'truePassword': truePassword, 'trueUsername': trueUsername})
+    form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
 
 
@@ -30,7 +37,7 @@ def signin(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('/',{'user':user})
+            return redirect('/', {'user': user})
         else:
             return redirect('/', {'error': True})
     else:
