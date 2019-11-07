@@ -10,9 +10,4 @@ class SignUpForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name','username', 'email', 'password1', 'password2',)
-
-    def is_valid(self):
-        if self.password1 != self.password2:
-            return False
-        return True
+        fields = ('first_name', 'last_name', 'username', 'email', 'password1', 'password2',)
