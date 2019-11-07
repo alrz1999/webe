@@ -13,8 +13,8 @@ def home(request):
 
 
 def signup(request):
-    truePassword = True
-    trueUsername = True
+    truePassword = False
+    trueUsername = False
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
@@ -22,9 +22,10 @@ def signup(request):
             return redirect('/')
         else:
             if request.POST['password1'] != request.POST['password2']:
-                truePassword = False
+                truePassword = True
             elif len(User.objects.all().filter(username=request.POST['username'])) > 0:
-                trueUsername = False
+                trueUsername = True
+            print(trueUsername, truePassword)
             return redirect('/register', {'form': form, 'truePassword': truePassword, 'trueUsername': trueUsername})
     form = SignUpForm()
     return render(request, 'signup.html', {'form': form})

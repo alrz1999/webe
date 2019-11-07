@@ -7,13 +7,13 @@
         {{ form.as_p }}
         <button type="submit" name="submit">ثبت نام</button>
     </form>
-    {% if truePassword or trueUsername %}
+    {% if  truePassword or trueUsername %}
         <div id="errors">
-            {% if  not truePassword %}
+            {% if truePassword %}
                 گذرواژه و تکرار گذرواژه یکسان نیستند
                 <br>
             {% endif %}
-            {% if not trueUsername %}
+            {% if trueUsername %}
                 نام کاربری شما در سیستم موجود است
             {% endif %}
 
