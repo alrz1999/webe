@@ -2,26 +2,26 @@
 
 {% block content %}
     <h2>ثبت نام</h2>
-    <form id='register-form' method="post">
+    <form id='register-form' action="/register" method="post">
         {% csrf_token %}
         <label>
             نام<input name="first_name">
-        </label>
+        </label><br>
         <label>
             نام خانوادگی<input name="last_name">
-        </label>
+        </label><br>
         <label>
             نام کاربری<input name="username">
-        </label>
+        </label><br>
         <label>
             ایمیل<input name="email">
-        </label>
+        </label><br>
         <label>
             رمز عبور<input name="password1">
-        </label>
+        </label><br>
         <label>
             تکرار رمز عبور<input name="password2">
-        </label>
+        </label><br>
         <button type="submit" name="submit">ثبت نام</button>
     </form>
 {% endblock %}
