@@ -2,7 +2,7 @@
 
 {% block content %}
     <h2>ثبت نام</h2>
-    <form id='register-form' action="/register" method="post">
+    <form id='register_form' action="/register" method="post">
         {% csrf_token %}
         {{ form.as_p }}
 {#        <label>#}
