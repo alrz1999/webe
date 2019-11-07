@@ -30,7 +30,7 @@ def signin(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return render(request, 'home.html', {"user": user})
+            return redirect('/',{'user':user})
         else:
             return redirect('/', {'error': True})
     else:
