@@ -2,21 +2,28 @@
 
 {% block content %}
     <h2>ثبت نام</h2>
-    <form id='register_form' action="/register" method="POST">
+    <form id='register_form' action="{% url 'edu:register' %}" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" name="submit">ثبت نام</button>
     </form>
 
     <div id="errors">
-        {% if truePassword %}
+        {% if invalidPassword %}
             گذرواژه و تکرار گذرواژه یکسان نیستند
             <br>
         {% endif %}
-        {% if trueUsername %}
+        {% if invalidUsername %}
             نام کاربری شما در سیستم موجود است
         {% endif %}
-
     </div>
+
+
+
+
+
+
+
+
 
 {% endblock %}

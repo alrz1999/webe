@@ -5,7 +5,7 @@ from edu.views import *
 app_name = 'edu'
 urlpatterns = [
     path('', home, name='home'),
-    path('register', sign_up, name='sign_up'),
-    path('signIn', sign_in, name='sign_in'),
-    path('logout', log_out, name='log_out')
+    path('login/', login, name='login'),
+    path('register/', register, name='register'),
+    path('logout/', logout, name='logout'),
 ]

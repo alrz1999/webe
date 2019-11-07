@@ -15,8 +15,8 @@
 <div id="navbar" class="ui inverted menu">
     <a id="homepage" class="item" href="{% url 'edu:home' %}">صفحه اصلی</a>
     {% if  not user.is_authenticated %}
-        <a id="login" class="item" href="{% url 'edu:signIn' %}">ورود</a>
-        <a id="register" class="item" href="{% url 'edu:signup' %}">ثبت نام</a>
+        <a id="login" class="item" href="{% url 'edu:login' %}">ورود</a>
+        <a id="register" class="item" href="{% url 'edu:register' %}">ثبت نام</a>
     {% else %}
         <a id="logout" class="item" href="{% url 'edu:logout' %}">خروج</a>
     {% endif %}

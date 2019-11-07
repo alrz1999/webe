@@ -12,27 +12,26 @@ def home(request):
     return render(request, 'home.html')
 
 
-def sign_up(request):
-    truePassword = False
-    trueUsername = False
+def register(request):
+    invalidPassword = False
+    invalidUsername = False
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
+        form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('edu:home')
         else:
             if request.POST['password1'] != request.POST['password2']:
-                truePassword = True
-            elif len(User.objects.all().filter(username=request.POST['username'])) > 0:
-                trueUsername = True
-            print(trueUsername, truePassword)
-            return redirect('/register',
-                            {'form': form, 'truePassword': truePassword, 'trueUsername': trueUsername, 'errors': True})
-    form = SignUpForm()
-    return render(request, 'signup.html', {'form': form})
+                invalidPassword = True
+            if User.objects.filter(username=request.POST.get('username')).exists():
+                invalidUsername = True
+            return render(request, 'register.html',
+                          {'form': form, 'invalidUsername': invalidUsername, 'invalidPassword': invalidPassword})
+    form = RegisterForm()
+    return render(request, 'register.html', {'form': form})
 
 
-def sign_in(request):
+def login(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -43,9 +42,9 @@ def sign_in(request):
         else:
             return redirect('/', {'error': True})
     else:
-        form = SignInForm()
-    return render(request, 'signin.html', {'form': form})
+        form = LoginForm()
+    return render(request, 'login.html', {'form': form})
 
 
-def log_out(requset):
+def logout(requset):
     pass
