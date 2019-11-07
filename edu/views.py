@@ -12,7 +12,7 @@ def home(request):
     return render(request, 'home.html')
 
 
-def signup(request):
+def sign_up(request):
     truePassword = False
     trueUsername = False
     if request.method == 'POST':
@@ -26,12 +26,13 @@ def signup(request):
             elif len(User.objects.all().filter(username=request.POST['username'])) > 0:
                 trueUsername = True
             print(trueUsername, truePassword)
-            return redirect('/register', {'form': form, 'truePassword': truePassword, 'trueUsername': trueUsername})
+            return redirect('/register',
+                            {'form': form, 'truePassword': truePassword, 'trueUsername': trueUsername, 'errors': True})
     form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
 
 
-def signin(request):
+def sign_in(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -44,3 +45,7 @@ def signin(request):
     else:
         form = SignInForm()
     return render(request, 'signin.html', {'form': form})
+
+
+def log_out(requset):
+    pass
