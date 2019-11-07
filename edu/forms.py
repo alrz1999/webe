@@ -10,4 +10,8 @@ class SignUpForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'username', 'email', 'password1', 'password2',)
+        fields = ('first_name', 'last_name', 'username', 'email', 'password1', 'password2')
+
+    def is_valid(self):
+        print(self)
+
