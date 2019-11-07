@@ -1,3 +1,4 @@
+from django.core.mail import send_mail
 from django.shortcuts import render
 
 # Create your views here.
@@ -50,6 +51,12 @@ def contact_us(request):
     if request.method == 'POST':
         form = ContactUsForm(request.POST)
         if form.is_valid():
+            send_mail(
+                request.POST['title'],
+                request.POST['text'],
+                'webeloperstemp@gmail.com',
+                ['alrz1999@gmail.com',],
+            )
             return render(request, 'aftercontactUs.html')
         else:
             return redirect('edu:contact_us')
