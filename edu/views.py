@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.shortcuts import render
 
@@ -55,7 +56,7 @@ def contact_us(request):
                 request.POST['title'],
                 request.POST['text'],
                 'webeloperstemp@gmail.com',
-                ['alrz1999@gmail.com',],
+                ['webe19lopers@gmail.com', ],
             )
             return render(request, 'aftercontactUs.html')
         else:
@@ -68,3 +69,9 @@ def contact_us(request):
 def logout_view(request):
     logout(request)
     return redirect('/')
+
+
+@login_required(login_url='/login')
+def profile_view(request):
+    user = request.user
+    return render(request, 'profile.html', {'user': user})
