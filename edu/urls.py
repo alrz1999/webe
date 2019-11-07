@@ -5,9 +5,9 @@ from edu.views import *
 
 app_name = 'edu'
 urlpatterns = [
-    url(r'^$', home, name='home'),
-    url(r'^login/$', log_in, name='login'),
-    url(r'^register/$', register, name='register'),
-    url(r'^logout/$', logout, name='logout'),
-    url(r'^cotactus/$', contact_us, name='contact_us')
+    path('', home, name='home'),
+    path('login/', log_in, name='login'),
+    path('register/', register, name='register'),
+    path('logout/', logout_view, name='logout_view'),
+    path('cotactus/', contact_us, name='contact_us')
 ]

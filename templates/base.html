@@ -18,7 +18,7 @@
         <a id="login" class="item" href="{% url 'edu:login' %}">ورود</a>
         <a id="register" class="item" href="{% url 'edu:register' %}">ثبت نام</a>
     {% else %}
-        <a id="logout" class="item" href="{% url 'edu:logout' %}">خروج</a>
+        <a id="logout" class="item" href="{% url 'edu:logout_view' %}">خروج</a>
     {% endif %}
     <a id="contact_us" class="item" href="{% url 'edu:contact_us' %}">صفحه تماس با ما</a>
 

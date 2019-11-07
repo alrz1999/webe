@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -46,10 +46,6 @@ def log_in(request):
     return render(request, 'login.html', {'form': form})
 
 
-def logout(requset):
-    pass
-
-
 def contact_us(request):
     if request.method == 'POST':
         form = ContactUsForm(request.POST)
@@ -60,3 +56,8 @@ def contact_us(request):
 
     form = ContactUsForm()
     return render(request, 'contactus.html', {'form': form})
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')
