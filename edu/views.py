@@ -31,7 +31,7 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 
-def login(request):
+def log_in(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -48,3 +48,15 @@ def login(request):
 
 def logout(requset):
     pass
+
+
+def contact_us(request):
+    if request.method == 'POST':
+        form = ContactUsForm(request.POST)
+        if form.is_valid():
+            return render(request, 'aftercontactUs.html')
+        else:
+            return redirect('edu:contact_us')
+
+    form = ContactUsForm()
+    return render(request, 'contactus.html', {'form': form})

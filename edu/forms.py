@@ -1,7 +1,10 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.db import models
 from django.forms import ModelForm
+
+from edu.models import ContactUs
 
 
 class RegisterForm(UserCreationForm):
@@ -27,3 +30,13 @@ class LoginForm(ModelForm):
     class Meta:
         model = User
         fields = ('username', 'password',)
+
+
+class ContactUsForm(ModelForm):
+    title = forms.CharField(max_length=30, required=True)
+    email = forms.EmailField(required=True)
+    text = forms.CharField(widget=forms.Textarea, max_length=250, min_length=10, required=True)
+
+    class Meta:
+        model = ContactUs
+        fields = ['title', 'text', 'email']

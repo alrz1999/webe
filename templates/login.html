@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-    <form id="login_form" action="login" method="POST">
+    <form id="login_form" action="/contactus" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" name="submit">ورود</button>
+
     </form>
 
 
