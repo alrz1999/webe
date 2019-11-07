@@ -14,11 +14,17 @@
 
 <div id="navbar" class="ui inverted menu">
     <a id="homepage" class="active item" href="/">صفحه اصلی</a>
-    {% if  not user.is_authenticated  %}
+    {% if  not user.is_authenticated %}
         <a id="login" class="active item" href="/signin">ورود</a>
         <a id="register" class="active item" href="/register">ثبت نام</a>
     {% else %}
         <a id="logout" class="active item" href="/">خروج</a>
+    {% endif %}
+
+    {% if error %}
+        <div id="error">
+
+        </div>
     {% endif %}
 
 

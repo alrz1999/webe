@@ -32,7 +32,7 @@ def signin(request):
             login(request, user)
             return render(request, 'home.html', {"user": user})
         else:
-            return redirect('/')
+            return redirect('/', {'error': True})
     else:
         form = SignInForm()
     return render(request, 'signin.html', {'form': form})
