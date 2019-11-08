@@ -84,8 +84,8 @@ def panel_view(request):
 
 def profile_setting_view(request):
     if request.method == 'POST':
-        firstname = request.POST['first_name']
-        lastname = request.POST['last_name']
+        firstname = request.POST.get('first_name')
+        lastname = request.POST.get('last_name')
         user = request.user
         if firstname != '':
             user.first_name = firstname
@@ -146,3 +146,7 @@ def search_course(request):
 
         return render(request, 'courses.html', {'coursess': coursess, 'courses': Course.objects.all()})
     return render(request, 'courses.html', {'coursess': coursess, 'courses': Course.objects.all()})
+
+
+def add_course(request):
+    pass
