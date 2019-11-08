@@ -12,7 +12,7 @@ class ContactUs(models.Model):
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, related_name='userprofile')
     profile_image = models.ImageField(upload_to='media',null=True)
 
 
