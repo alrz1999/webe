@@ -43,8 +43,8 @@ class ContactUsForm(ModelForm):
 
 
 class ProfileSettingForm(forms.Form):
-    first_name = forms.CharField(max_length=100, required=True)
-    last_name = forms.CharField(max_length=100, required=True)
+    first_name = forms.CharField(max_length=100, required=False)
+    last_name = forms.CharField(max_length=100, required=False)
     profile_image = forms.ImageField(required=False)
 
 
