@@ -1,5 +1,7 @@
 from django.conf.urls import url
+from django.conf.urls.static import static
 from django.contrib import admin
+from django.conf import settings
 from django.urls import path
 from edu.views import *
 
@@ -17,3 +19,6 @@ urlpatterns = [
     path('makenewcourse', make_new_course, name='make_new_course'),
     path('searchcourse', search_course, name='search_course'),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

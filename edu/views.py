@@ -79,7 +79,7 @@ def profile_view(request):
 
 
 def panel_view(request):
-    return render(request, 'panel.html',{'user':request.user})
+    return render(request, 'panel.html', {'user': request.user})
 
 
 def profile_setting_view(request):
@@ -91,6 +91,9 @@ def profile_setting_view(request):
             user.first_name = firstname
         if lastname != '':
             user.last_name = lastname
+        if request.FILES['profile_image']:
+            user.userprofile.profile_image = request.FILES['profile_image']
+        user.userprofile.save()
         user.save()
         return render(request, 'profile.html', {'user': user})
     else:

@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.forms import ModelForm
 
-from edu.models import ContactUs, Course
+from edu.models import ContactUs, Course, UserProfile
 
 
 class RegisterForm(UserCreationForm):
@@ -42,10 +42,10 @@ class ContactUsForm(ModelForm):
         fields = ['title', 'text', 'email']
 
 
-class ProfileSettingForm(ModelForm):
-    class Meta:
-        model = User
-        fields = ['first_name', 'last_name']
+class ProfileSettingForm(forms.Form):
+    first_name = forms.CharField(max_length=100,required=False)
+    last_name = forms.CharField(max_length=100,required=False)
+    profile_image = forms.ImageField(required=False)
 
 
 class MakeNewCourseForm(ModelForm):

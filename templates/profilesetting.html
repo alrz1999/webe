@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-    <form id="setting_form" action="{% url 'edu:profileSettingView' %}" method="POST">
+    <form id="setting_form" action="{% url 'edu:profileSettingView' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" name="submit">ثبت تغییرات</button>

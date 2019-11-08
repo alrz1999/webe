@@ -12,8 +12,8 @@ class ContactUs(models.Model):
 
 
 class UserProfile(models.Model):
-    # This field is required.
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    profile_image = models.ImageField(upload_to='media',null=True)
 
 
 def create_user_profile(sender, instance, created, **kwargs):
