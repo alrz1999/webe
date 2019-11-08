@@ -42,5 +42,7 @@ class ContactUsForm(ModelForm):
         fields = ['title', 'text', 'email']
 
 
-# class ProfileSettingForm(UpdateForm):
-
+class ProfileSettingForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name']

@@ -83,14 +83,15 @@ def panel_view(request):
 
 def profile_setting_view(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('/', {'user': user})
-        else:
-            return redirect('/', {'error': True})
+        firstname = request.POST['first_name']
+        lastname = request.POST['last_name']
+        user = request.user
+        if firstname != '':
+            user.first_name = firstname
+        if lastname != '':
+            user.last_name = lastname
+        user.save()
+        return render(request, 'profile.html', {'user': user})
     else:
-        form = LoginForm()
-    return render(request, 'login.html', {'form': form})
+        form = ProfileSettingForm()
+    return render(request, 'profilesetting.html', {'form': form})
