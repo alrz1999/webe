@@ -8,8 +8,8 @@ from edu.models import ContactUs, Course, UserProfile
 
 
 class RegisterForm(UserCreationForm):
-    first_name = forms.CharField(max_length=30, required=False, label='first name')
-    last_name = forms.CharField(max_length=30, required=False, label='last name')
+    first_name = forms.CharField(max_length=30, required=True, label='first name')
+    last_name = forms.CharField(max_length=30, required=True, label='last name')
     email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.', label='email')
 
     class Meta:
