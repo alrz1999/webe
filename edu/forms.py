@@ -53,3 +53,9 @@ class MakeNewCourseForm(ModelForm):
         model = Course
         fields = ('department', 'name', 'course_number', 'group_number', 'teacher', 'start_time', 'end_time',
                   'first_day', 'second_day',)
+
+
+class SearchForm(ModelForm):
+    class Meta:
+        model = Course
+        fields = ('department',)

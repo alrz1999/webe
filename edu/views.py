@@ -115,11 +115,12 @@ def courses_view(request):
 
 def search_course(request):
     if request.POST:
-        query = request.POST.get('search_query')
-        src = User.objects.filter(is_staff=True)
-        department1 = src.filter(username__icontains=query)
-        records = []
-        for course in Course.objects.filter(department=department1):
-            records.append(course)
-        results = records
-        return render(request, 'search.html', {'records': results})
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            form.save()
+            department1 = form.department
+            records = []
+            for course in Course.objects.filter(department=department1):
+                records.append(course)
+            results = records
+            return render(request, 'searchform.html', {'records': results})
