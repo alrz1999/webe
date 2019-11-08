@@ -49,7 +49,7 @@ class ProfileSettingForm(forms.Form):
 
 
 class MakeNewCourseForm(ModelForm):
-    exam_time = forms.DateField(required=True)
+
 
     class Meta:
         model = Course
