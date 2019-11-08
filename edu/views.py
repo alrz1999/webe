@@ -52,12 +52,12 @@ def contact_us(request):
     if request.method == 'POST':
         form = ContactUsForm(request.POST)
         if form.is_valid():
-            send_mail(
-                request.POST['title'],
-                request.POST['text'],
-                'webeloperstemp@gmail.com',
-                ['webe19lopers@gmail.com', ],
-            )
+            # send_mail(
+            #     request.POST['title'],
+            #     request.POST['text'],
+            #     'webeloperstemp@gmail.com',
+            #     ['webe19lopers@gmail.com', ],
+            # )
             return render(request, 'aftercontactUs.html')
         else:
             return redirect('edu:contact_us')
