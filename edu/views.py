@@ -91,7 +91,7 @@ def profile_setting_view(request):
             user.first_name = firstname
         if lastname != '':
             user.last_name = lastname
-        if request.FILES['profile_image']:
+        if request.FILES.get('profile_image'):
             user.userprofile.profile_image = request.FILES['profile_image']
         user.userprofile.save()
         user.save()
