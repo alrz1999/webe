@@ -2,10 +2,7 @@
 {% block content %}
     <span id="text_first_name">{{ user.first_name }}</span><br>
     <span id="text_user_name">{{ user.username }}</span><br>
-
     <span id="text_last_name">{{ user.last_name }}</span><br>
-
-    <img id="profile_image" src="{{ user.userprofile.profile_image.url }}" alt="qq">
-
+    <img id="profile_image" src="{{ user.userprofile.profile_image.url }}" alt="">
     <a id="setting" href="{% url 'edu:profileSettingView' %}">ویرایش نمایه کاربر</a>
 {% endblock %}
