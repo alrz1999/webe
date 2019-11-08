@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form id="search_form" action="{% url 'edu:search_course' %}" method="POST">
+        {% csrf_token %}
+
+    </form>
+{% endblock %}
