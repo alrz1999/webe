@@ -43,8 +43,4 @@ class Course(models.Model):
     first_day = models.IntegerField(choices=DAY_CHOICES)
     second_day = models.IntegerField(choices=DAY_CHOICES)
     exam_date = models.DateField(null=True)
-
-
-# class UserCourse(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name=User)
+    user = models.ManyToManyField(User)

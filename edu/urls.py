@@ -18,6 +18,7 @@ urlpatterns = [
     path('coursesview', courses_view, name='coursesView'),
     path('makenewcourse', make_new_course, name='make_new_course'),
     path('searchcourse', search_course, name='search_course'),
+    path('addcourse', add_course, name='add_course')
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
