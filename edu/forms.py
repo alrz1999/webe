@@ -40,3 +40,7 @@ class ContactUsForm(ModelForm):
     class Meta:
         model = ContactUs
         fields = ['title', 'text', 'email']
+
+
+# class ProfileSettingForm(UpdateForm):
+

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form id="setting_form" action="{% url 'edu:profileSettingView' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" name="submit">ثبت تغییرات</button>
+
+    </form>
+
+
+{% endblock %}

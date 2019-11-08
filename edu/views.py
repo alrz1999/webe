@@ -79,3 +79,18 @@ def profile_view(request):
 
 def panel_view(request):
     return render(request, 'panel.html')
+
+
+def profile_setting_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('/', {'user': user})
+        else:
+            return redirect('/', {'error': True})
+    else:
+        form = LoginForm()
+    return render(request, 'login.html', {'form': form})
