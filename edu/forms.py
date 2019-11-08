@@ -45,14 +45,17 @@ class ContactUsForm(ModelForm):
 class ProfileSettingForm(forms.Form):
     first_name = forms.CharField(max_length=100, required=False)
     last_name = forms.CharField(max_length=100, required=False)
-    profile_image = forms.ImageField(required=False)
+    profile_image = forms.ImageField(required=False, )
 
 
 class MakeNewCourseForm(ModelForm):
+    exam_time = forms.DateField(required=True)
+
     class Meta:
         model = Course
         fields = ('department', 'name', 'course_number', 'group_number', 'teacher', 'start_time', 'end_time',
-                  'first_day', 'second_day',)
+                  'first_day', 'second_day', 'exam_time')
+
 
 
 class SearchForm(ModelForm):

@@ -42,3 +42,8 @@ class Course(models.Model):
     end_time = models.TimeField()
     first_day = models.IntegerField(choices=DAY_CHOICES)
     second_day = models.IntegerField(choices=DAY_CHOICES)
+    exam_date = models.DateField(null=True)
+
+
+
+
