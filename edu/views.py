@@ -94,7 +94,6 @@ def profile_setting_view(request):
         if request.FILES.get('profile_image'):
             user.userprofile.profile_image = request.FILES['profile_image']
             user.userprofile.save()
-
         user.save()
         return render(request, 'profile.html', {'user': user})
     else:

@@ -43,19 +43,16 @@ class ContactUsForm(ModelForm):
 
 
 class ProfileSettingForm(forms.Form):
-    first_name = forms.CharField(max_length=100, required=False)
-    last_name = forms.CharField(max_length=100, required=False)
+    first_name = forms.CharField(max_length=100)
+    last_name = forms.CharField(max_length=100)
     profile_image = forms.ImageField(required=False, )
 
 
 class MakeNewCourseForm(ModelForm):
-
-
     class Meta:
         model = Course
         fields = ('department', 'name', 'course_number', 'group_number', 'teacher', 'start_time', 'end_time',
                   'first_day', 'second_day', 'exam_date')
-
 
 
 class SearchForm(ModelForm):

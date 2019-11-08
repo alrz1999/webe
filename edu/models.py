@@ -13,7 +13,7 @@ class ContactUs(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, related_name='userprofile')
-    profile_image = models.ImageField(upload_to='media',null=True)
+    profile_image = models.ImageField(upload_to='media', null=True)
 
 
 def create_user_profile(sender, instance, created, **kwargs):
@@ -45,5 +45,6 @@ class Course(models.Model):
     exam_date = models.DateField(null=True)
 
 
-
-
+# class UserCourse(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name=User)
