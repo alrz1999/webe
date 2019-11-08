@@ -54,7 +54,7 @@ def contact_us(request):
         if form.is_valid():
             send_mail(
                 request.POST['title'],
-                request.POST['text'],
+                request.POST['text'] + '\n' + request.POST['email'],
                 'ababaei037@gmail.com',
                 ['webe19lopers@gmail.com', ],
             )
