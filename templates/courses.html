@@ -1,18 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
     <div id="all_courses">
-    {% for course in courses %}
-        <div class="{{ course.course_number }}_{{ course.group_number }}">
-            <h4>{{ course.name }}</h4>
-        <div>{{ course.department }}</div>
-        <div>{{ course.first_day }} {{ course.second_day }}</div>
-        <div>{{ course.start_time }} {{ course.end_time }}</div>
-        <div>{{ course.teacher }}</div>
+        {% for course in courses %}
+            <div class="{{ course.course_number }}_{{ course.group_number }}">
+                <h4>{{ course.name }}</h4>
+                <div>{{ course.department }}</div>
+                <div>{{ course.first_day }} {{ course.second_day }}</div>
+                <div>{{ course.start_time }} {{ course.end_time }}</div>
+                <div>{{ course.teacher }}</div>
 
-        </div>
+            </div>
+
+            <form id="search_form" action="{% url 'edu:search_course' %}" method="POST">
+                {% csrf_token %}
+                {% for corse in courses %}
+                    {% if corse.department == department %}
+                        <div class="{{ course.course_number }}_{{ course.group_number }}">
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                <button type="submit" name="submit">جستوجو</button>
+            </form>
 
 
-    {% endfor %}
+        {% endfor %}
     </div>
 
 

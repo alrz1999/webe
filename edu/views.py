@@ -124,4 +124,4 @@ def search_course(request):
             #     records.append(course)
             # results = records
 
-            return render(request, 'searchform.html', {'courses': Course.objects.all()}, {'department': department1})
+            return render(request, 'courses.html', {'courses': Course.objects.all()}, {'department': department1})
