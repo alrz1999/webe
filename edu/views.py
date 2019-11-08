@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
+from django.http import JsonResponse
 from django.shortcuts import render
 
 # Create your views here.
@@ -110,3 +111,15 @@ def make_new_course(request):
 
 def courses_view(request):
     return render(request, 'courses.html', {'courses': Course.objects.all()})
+
+
+def search_course(request):
+    if request.GET:
+        query = request.GET.get('search_query')
+        src = User.objects.filter(is_staff=True)
+        department1 = src.filter(username__icontains=query)
+        records = []
+        for course in Course.objects.filter(department=department1):
+            records.append(course)
+        results = records
+        return JsonResponse(results, safe=False)
