@@ -12,5 +12,6 @@ urlpatterns = [
     path('cotactus/', contact_us, name='contact_us'),
     path('profileview/', profile_view, name='profileView'),
     path('panelview/', panel_view, name='panelview'),
-    path('setting/', profile_setting_view, name='profileSettingView')
+    path('setting/', profile_setting_view, name='profileSettingView'),
+path('make_new_course', make_new_course, name='make_new_course')
 ]

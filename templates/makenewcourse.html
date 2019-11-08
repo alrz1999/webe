@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <form id="make_new_course" action="{% url 'edu:login' %}" method="POST"> {% csrf_token %}
+        <button type="submit" name="submit">ورود</button>
+    </form>
+{% endblock %}

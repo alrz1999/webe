@@ -95,3 +95,7 @@ def profile_setting_view(request):
     else:
         form = ProfileSettingForm()
     return render(request, 'profilesetting.html', {'form': form})
+
+def make_new_course(request):
+    return render(request, 'makenewcourse.html')
+
