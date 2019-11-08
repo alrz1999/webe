@@ -98,19 +98,15 @@ def profile_setting_view(request):
 
 
 def make_new_course(request):
-    invalidPassword = False
-    invalidUsername = False
     if request.method == 'POST':
-        form = RegisterForm(request.POST)
+        form = MakeNewCourseForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('edu:home')
-        else:
-            if request.POST['password1'] != request.POST['password2']:
-                invalidPassword = True
-            if User.objects.filter(username=request.POST.get('username')).exists():
-                invalidUsername = True
-            return render(request, 'register.html',
-                          {'form': form, 'invalidUsername': invalidUsername, 'invalidPassword': invalidPassword})
+            return render(request, 'makenewcourse.html', {'form': form})
+        return render(request, 'makenewcourse.html', {'form': form})
     form = MakeNewCourseForm()
     return render(request, 'makenewcourse.html', {'form': form})
+
+
+def courses_view(request):
+    return render(request, 'courses.html', {'courses': Course.objects.all()})

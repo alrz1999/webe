@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-    <a id="make_new_course" href="{% url 'edu:make_new_course' %}">ساختن واحد</a>
-    <a id='courses'> </a>
+    <a id="make_new_course" href="{% url 'edu:make_new_course' %}">ساختن واحد</a><br>
+    <a id="courses" href="{% url 'edu:coursesView' %}">درس ها</a>
 
 
 {% endblock %}
