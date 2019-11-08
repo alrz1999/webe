@@ -13,5 +13,5 @@ urlpatterns = [
     path('profileview/', profile_view, name='profileView'),
     path('panelview/', panel_view, name='panelview'),
     path('setting/', profile_setting_view, name='profileSettingView'),
-path('make_new_course', make_new_course, name='make_new_course')
+    path('makenewcourse', make_new_course, name='make_new_course')
 ]

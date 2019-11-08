@@ -52,12 +52,12 @@ def contact_us(request):
     if request.method == 'POST':
         form = ContactUsForm(request.POST)
         if form.is_valid():
-            # send_mail(
-            #     request.POST['title'],
-            #     request.POST['text'],
-            #     'webeloperstemp@gmail.com',
-            #     ['webe19lopers@gmail.com', ],
-            # )
+            send_mail(
+                request.POST['title'],
+                request.POST['text'],
+                'webeloperstemp@gmail.com',
+                ['webe19lopers@gmail.com', ],
+            )
             return render(request, 'aftercontactUs.html')
         else:
             return redirect('edu:contact_us')
@@ -96,6 +96,21 @@ def profile_setting_view(request):
         form = ProfileSettingForm()
     return render(request, 'profilesetting.html', {'form': form})
 
-def make_new_course(request):
-    return render(request, 'makenewcourse.html')
 
+def make_new_course(request):
+    invalidPassword = False
+    invalidUsername = False
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('edu:home')
+        else:
+            if request.POST['password1'] != request.POST['password2']:
+                invalidPassword = True
+            if User.objects.filter(username=request.POST.get('username')).exists():
+                invalidUsername = True
+            return render(request, 'register.html',
+                          {'form': form, 'invalidUsername': invalidUsername, 'invalidPassword': invalidPassword})
+    form = RegisterForm()
+    return render(request, 'register.html', {'form': form})

@@ -22,3 +22,15 @@ def create_user_profile(sender, instance, created, **kwargs):
 
 
 post_save.connect(create_user_profile, sender=User)
+
+
+class Course(models.Model):
+    department = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
+    course_number = models.IntegerField(unique=True)
+    group_number = models.IntegerField(max_length=100)
+    department = models.CharField(max_length=100)
+    department = models.CharField(max_length=100)
+    department = models.CharField(max_length=100)
+    department = models.CharField(max_length=100)
+    department = models.CharField(max_length=100)
