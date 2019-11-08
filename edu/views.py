@@ -78,7 +78,7 @@ def profile_view(request):
 
 
 def panel_view(request):
-    return render(request, 'panel.html')
+    return render(request, 'panel.html',{'user':request.user})
 
 
 def profile_setting_view(request):
