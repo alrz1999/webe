@@ -119,8 +119,9 @@ def search_course(request):
         if form.is_valid():
             form.save()
             department1 = form.department
-            records = []
-            for course in Course.objects.filter(department=department1):
-                records.append(course)
-            results = records
-            return render(request, 'searchform.html', {'records': results})
+            # records = []
+            # for course in Course.objects.filter(department=department1):
+            #     records.append(course)
+            # results = records
+
+            return render(request, 'searchform.html', {'courses': Course.objects.all()}, {'department': department1})
