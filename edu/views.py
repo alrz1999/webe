@@ -83,6 +83,7 @@ def panel_view(request):
 
 
 def profile_setting_view(request):
+    temp = False
     if request.method == 'POST':
         firstname = request.POST['first_name']
         lastname = request.POST['last_name']
@@ -94,11 +95,12 @@ def profile_setting_view(request):
         if request.FILES.get('profile_image'):
             user.userprofile.profile_image = request.FILES['profile_image']
             user.userprofile.save()
+            temp = True
         user.save()
-        return render(request, 'profile.html', {'user': user})
+        return render(request, 'profile.html', {'user': user, 'temp': temp})
     else:
         form = ProfileSettingForm()
-    return render(request, 'profilesetting.html', {'form': form})
+    return render(request, 'profilesetting.html', {'form': form, 'temp': temp})
 
 
 def make_new_course(request):
