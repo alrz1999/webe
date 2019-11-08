@@ -55,7 +55,7 @@ def contact_us(request):
             send_mail(
                 request.POST['title'],
                 request.POST['text'],
-                'webeloperstemp@gmail.com',
+                'ababaei037@gmail.com',
                 ['webe19lopers@gmail.com', ],
             )
             return render(request, 'aftercontactUs.html')
