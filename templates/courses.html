@@ -10,21 +10,25 @@
                 <div>{{ course.teacher }}</div>
 
             </div>
-
-            <form id="search_form" action="{% url 'edu:search_course' %}" method="POST">
-                {% csrf_token %}
-                {% for corse in courses %}
-                    {% if corse.department == department %}
-                        <div class="{{ course.course_number }}_{{ course.group_number }}">
-                        </div>
-                    {% endif %}
-                {% endfor %}
-                <button type="submit" name="submit">جستوجو</button>
-            </form>
-
-
         {% endfor %}
     </div>
+    <form id="search_form" action="{% url 'edu:search_course' %}" method="POST">
+        {% csrf_token %}
+        <input name="search_query">
+        <button type="submit" name="submit">جستوجو</button>
+    </form>
+
+    {% if coursess %}
+        <div id="search_result">
+            {% for course in coursess %}
+                <div class="{{ course.course_number }}_{{ course.group_number }}">
+                    {{ course.name }}<br>
+                    {{ course.teacher }}
+                </div>
+            {% endfor %}
+        </div>
+
+    {% endif %}
 
 
 {% endblock %}

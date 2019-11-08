@@ -117,14 +117,18 @@ def courses_view(request):
 
 
 def search_course(request):
+    coursess = []
     if request.POST:
-        form = SearchForm(request.POST)
-        if form.is_valid():
-            form.save()
-            department1 = form.department
-            # records = []
-            # for course in Course.objects.filter(department=department1):
-            #     records.append(course)
-            # results = records
 
-            return render(request, 'courses.html', {'courses': Course.objects.all()}, {'department': department1})
+        name = request.POST['search_query']
+        print(name)
+        for course in Course.objects.all():
+            if course.department == name:
+                coursess.append(course)
+        # records = []
+        # for course in Course.objects.filter(department=department1):
+        #     records.append(course)
+        # results = records
+
+        return render(request, 'courses.html', {'coursess': coursess, 'courses': Course.objects.all()})
+    return render(request, 'courses.html', {'coursess': coursess, 'courses': Course.objects.all()})
