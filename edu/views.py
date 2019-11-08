@@ -121,10 +121,24 @@ def search_course(request):
     if request.POST:
 
         name = request.POST['search_query']
+        dcheck = request.POST.get('department')
+        tcheck = request.POST.get('teacher')
+        ccheck = request.POST.get('course')
         print(name)
-        for course in Course.objects.all():
-            if course.department == name:
-                coursess.append(course)
+        if (not dcheck and not tcheck and not ccheck) or (not dcheck and not tcheck and ccheck):
+            for course in Course.objects.all():
+                if course.department == name:
+                    coursess.append(course)
+        if tcheck:
+            for course in Course.objects.all():
+                if course.teacher == name:
+                    coursess.append(course)
+        if ccheck:
+            for course in Course.objects.all():
+                if course.name == name:
+                    coursess.append(course)
+        coursess = list(dict.fromkeys(coursess))
+
         # records = []
         # for course in Course.objects.filter(department=department1):
         #     records.append(course)
