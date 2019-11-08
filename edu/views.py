@@ -112,5 +112,5 @@ def make_new_course(request):
                 invalidUsername = True
             return render(request, 'register.html',
                           {'form': form, 'invalidUsername': invalidUsername, 'invalidPassword': invalidPassword})
-    form = RegisterForm()
-    return render(request, 'register.html', {'form': form})
+    form = MakeNewCourseForm()
+    return render(request, 'makenewcourse.html', {'form': form})
