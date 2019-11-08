@@ -4,8 +4,8 @@
     <span id="text_user_name">{{ user.username }}</span><br>
 
     <span id="text_last_name">{{ user.last_name }}</span><br>
-    {% if user.userprofile.profile_image %}
-        <img id="profile_image" src="{{ user.userprofile.profile_image.url }}" alt="qq">
-    {% endif %}
+
+    <img id="profile_image" src="{{ user.userprofile.profile_image.url }}" alt="qq">
+
     <a id="setting" href="{% url 'edu:profileSettingView' %}">ویرایش نمایه کاربر</a>
 {% endblock %}
