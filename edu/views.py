@@ -93,7 +93,7 @@ def profile_setting_view(request):
             user.last_name = lastname
         if request.FILES.get('profile_image'):
             user.userprofile.profile_image = request.FILES['profile_image']
-        user.userprofile.save()
+            user.userprofile.save()
         user.save()
         return render(request, 'profile.html', {'user': user})
     else:
@@ -125,7 +125,7 @@ def search_course(request):
         tcheck = request.POST.get('teacher')
         ccheck = request.POST.get('course')
         print(name)
-        if (not dcheck and not tcheck and not ccheck) or (not dcheck and not tcheck and ccheck):
+        if (not dcheck and not tcheck and not ccheck) or dcheck:
             for course in Course.objects.all():
                 if course.department == name:
                     coursess.append(course)
