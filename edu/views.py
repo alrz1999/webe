@@ -75,3 +75,7 @@ def logout_view(request):
 def profile_view(request):
     user = request.user
     return render(request, 'profile.html', {'user': user})
+
+
+def panel_view(request):
+    return render(request, 'panel.html')
