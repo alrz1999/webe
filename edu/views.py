@@ -148,9 +148,5 @@ def search_course(request):
     return render(request, 'courses.html', {'coursess': coursess, 'courses': Course.objects.all()})
 
 
-
-
-
-def add_course(request, *args):
-    print(request.GET.get('cnum'))
+def add_course(request):
     pass
